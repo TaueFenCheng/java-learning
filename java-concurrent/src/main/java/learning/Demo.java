@@ -1,0 +1,2 @@
+package learning;
+public class Demo {  public static void main(String[] args) throws Exception { var pool = java.util.concurrent.Executors.newFixedThreadPool(2); try { var count = new java.util.concurrent.atomic.AtomicInteger(); var a = pool.submit(count::incrementAndGet); var b = pool.submit(count::incrementAndGet); a.get(); b.get(); if(count.get()!=2) throw new AssertionError(); System.out.println(count); } finally { pool.shutdown(); } } }
